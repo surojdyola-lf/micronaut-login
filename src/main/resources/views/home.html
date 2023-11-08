@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+   <title>Home Page</title>
+</head>
+<body>
+<h1>Micronaut Login Tutorial</h1>
+
+<h2 th:if="${security}">Welcome authenticated user: <span th:text="${security.attributes.user['userPrincipalName']}"></h2>
+
+<h2 th:unless="${security}">Welcome anonymous user</h2>
+
+<nav>
+   <ul>
+      <li th:unless="${security}"><a href="/oauth/login/microsoft">Login with Microsoft</a></li>
+      <li th:unless="${security}"><a href="/oauth/login/okta">Login with Okta</a></li>
+      <li th:if="${security}"><a href="/logout">Logout</a></li>
+   </ul>
+</nav>
+</body>
+</html>
